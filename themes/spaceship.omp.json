@@ -5,13 +5,13 @@
       "alignment": "left",
       "segments": [
         {
-          "foreground": "lightYellow",
+          "foreground": "#35fcc0",
           "style": "plain",
           "template": "{{ .UserName }} ",
           "type": "session"
         },
         {
-          "foreground": "cyan",
+          "foreground": "#5a48ff",
           "properties": {
             "style": "folder"
           },
@@ -25,8 +25,7 @@
           "powerline_symbol": "\uE0B0",
           "foreground": "#12b820",
           "template": " \uE235  {{ .Full }} "
-        }
-        ,
+        },
         {
           "foreground": "#ff94df",
           "properties": {
@@ -36,6 +35,54 @@
           "style": "plain",
           "template": "<#ffffff>on</> {{ .HEAD }}{{ if gt .StashCount 0 }} \uf692 {{ .StashCount }}{{ end }} ",
           "type": "git"
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "right",
+      "segments": [
+        {
+          "foreground": "#5ae766",
+          "style": "plain",
+          "type": "text"
+        },
+        {
+          "foreground": "#5ae766",
+          "properties": {
+            "style": "dallas",
+            "threshold": 0
+          },
+          "style": "diamond",
+          "template": " {{ .FormattedMs }}s <#ffffff>\ue601</>",
+          "type": "executiontime"
+        },
+        {
+          "properties": {
+            "root_icon": "\uf292 "
+          },
+          "style": "diamond",
+          "template": " \uf0e7 ",
+          "type": "root"
+        },
+        {
+          "foreground": "#5ae766",
+          "style": "diamond",
+          "template": " <#ffffff>CPU:</> {{ round .PhysicalPercentUsed .Precision }}% ",
+          "type": "sysinfo"
+        },
+        {
+          "foreground": "#5ae766",
+          "style": "diamond",
+          "template": "<#ffffff>\uf6dc</> <#ffffff>RAM:</> {{ (div ((sub .PhysicalTotalMemory .PhysicalFreeMemory)|float64) 1000000000.0) }}/{{ (div .PhysicalTotalMemory 1000000000.0) }}GB ",
+          "type": "sysinfo"
+        },
+        {
+          "background": "transparent",
+          "foreground": "#ffffff",
+          "style": "plain",
+          "template": "{{.Icon}}",
+          "type": "os"
         }
       ],
       "type": "prompt"
